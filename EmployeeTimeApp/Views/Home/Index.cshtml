@@ -1,0 +1,36 @@
+﻿<!-- @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">Miya</a>.</p>
+</div> -->
+
+@model List<EmployeeTimeApp.Models.EmployeeTotal>
+
+@{
+    ViewData["Title"] = "Employee Hours";
+}
+
+<h1>Employee Total Hours Worked</h1>
+
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
+    <thead>
+        <tr style="background-color: #ccc;">
+            <th>Name</th>
+            <th>Total Hours</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var emp in Model)
+    {
+        var rowStyle = emp.TotalHours < 100 ? "background-color: #ffcccc;" : "";
+        <tr style="@rowStyle">
+            <td>@emp.EmployeeName</td>
+            <td>@emp.TotalHours.ToString("F2")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
